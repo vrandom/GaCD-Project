@@ -19,7 +19,7 @@ load_data <- function()
 Now, we load our feature names, which are in the second column of the "features.txt" file:
 
 ``` {r}
-    ## Read feature names
+    # Read feature names
     feature_names <- read.table("UCI HAR Dataset/features.txt",
                                 as.is = TRUE)[, 2]
 ```
@@ -51,7 +51,7 @@ We proceed by reading the train and test data with subjects, activities and the 
 And we merge everything into a tbl_df:
 
 ```{r}
-    ## Merge both data sets
+    # Merge both data sets
     tbl_df(rbind(train_table, test_table))
 }
 ```
@@ -60,6 +60,7 @@ Now, we simply have to call our function and it'll do everything we need:
 
 ```{r}
 data <- load_data()
+rm("load_data")
 ```
 
 # Step 2: Extract only "mean" and "std" columns
@@ -70,10 +71,11 @@ We extract only the measurements on the mean and standard deviation for each mea
 selected_cols = grepl("mean", colnames(data)) |
                 grepl("std", colnames(data))
 
-## Also select columns "subject" and "activity"
+# Also select columns "subject" and "activity"
 selected_cols[1:2] = TRUE
 
 data <- data[selected_cols]
+rm("selected_cols")
 ```
 
 # Step 3: Map activities to their respective names
@@ -100,4 +102,6 @@ avg_data <- data %>%
             summarize_each(funs(mean(.)), -subject, -activity)
 ```
 
-Thanks for reading!
+At this point, only two things from our code will be available to the environment: *data*, the loaded and neatly formatted data from the training and test datasets merged and *avg_data*, our grouping of means for subjects per activities.
+
+Thanks for reading and I hope you liked it!
