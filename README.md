@@ -63,7 +63,7 @@ data <- load_data()
 rm("load_data")
 ```
 
-# Step 2: Extract only "mean" and "std" columns
+## Step 2: Extract only "mean" and "std" columns
 
 We extract only the measurements on the mean and standard deviation for each measurement, by using the **grepl** function to identify the presence of substrings "mean" and "std" in our column names defined in the previous step:
 
@@ -78,7 +78,7 @@ data <- data[selected_cols]
 rm("selected_cols")
 ```
 
-# Step 3: Map activities to their respective names
+## Step 3: Map activities to their respective names
 
 Now we simply read the "activity_labels.txt" file and map our previously numeric data to the six factors corresponding to the six activities in the dataset:
 
@@ -88,11 +88,11 @@ data <- mutate(data, activity = activities[activity, 2])
 rm("activities")
 ```
 
-# Step 4: Name our columns appropriately
+## Step 4: Name our columns appropriately
 
 This step can be safely skipped as we have done this when loading data.
 
-# Step 5: Generate statistics with means for subjects, per activity
+## Step 5: Generate statistics with means for subjects, per activity
 
 Group data by subject and activity and summarize each column, except the "subject" and "activity" columns.
 
