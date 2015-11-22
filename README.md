@@ -102,6 +102,8 @@ avg_data <- data %>%
             summarize_each(funs(mean(.)), -subject, -activity)
 ```
 
+## Final thoughts:
+
 At this point, only two things from our code will be available to the environment: *data*, the loaded and neatly formatted data from the training and test datasets merged and *avg_data*, our grouping of means for subjects per activities.
 
 Thanks for reading and I hope you liked it!
