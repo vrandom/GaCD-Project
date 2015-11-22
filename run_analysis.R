@@ -54,6 +54,3 @@ rm("activities")
 avg_data <- data %>% 
             group_by(subject, activity) %>%
             summarize_each(funs(mean(.)), -subject, -activity)
-
-# Avoid returning data so RStudio won't draw its View.
-return(NULL)
