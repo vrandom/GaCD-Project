@@ -9,12 +9,12 @@ load_data <- function()
     
     # Read train data
     train_subjects <- read.table("UCI HAR Dataset/train/subject_train.txt",
-                                col.names = "subject")
+                                 col.names = "subject")
     train_activities <- read.table("UCI HAR Dataset/train/y_train.txt",
                                   col.names = "activity")
     train_data <- read.table("UCI HAR Dataset/train/X_train.txt",
-                            check.names = FALSE,
-                            col.names = feature_names)
+                             check.names = FALSE,
+                             col.names = feature_names)
     train_table <- cbind(train_subjects, train_activities, train_data)
     
     # Read test data
